@@ -1,9 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
 import NavBar from './NavBar'
 import SignUp from './Signup'
 import Login from './Login'
 import {useState, useEffect} from 'react'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState('')
