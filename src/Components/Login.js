@@ -20,7 +20,7 @@ function Login({setCurrentUser}) {
     }
     async function handleSubmit(e) {
         e.preventDefault()
-        let resp = await fetch('/sessions', {
+        let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

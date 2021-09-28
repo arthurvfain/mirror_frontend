@@ -37,10 +37,6 @@ function NavBar({currentUser, setCurrentUser}) {
                 <LinkContainer to='/signup'><Nav.Link >Sign Up</Nav.Link></LinkContainer>
                 <LinkContainer to='/login'><Nav.Link >Log In</Nav.Link></LinkContainer>
             </Nav>}
-            <Nav>
-                <LinkContainer to='/user_list'><Nav.Link>Users</Nav.Link></LinkContainer>
-                <LinkContainer to='/public_events'><Nav.Link>Public Events</Nav.Link></LinkContainer>
-            </Nav>
         </Container>
         </Navbar>
     )

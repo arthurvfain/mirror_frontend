@@ -26,7 +26,7 @@ function App() {
         <SignUp setCurrentUser={setCurrentUser}/>
       </Route>
       <Route exact path='/login'>
-        <Login setCurrentUser={setCurrentUser}/>
+        <Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       </Route>
     </Switch>
     </>
