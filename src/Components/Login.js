@@ -20,11 +20,14 @@ function Login({setCurrentUser}) {
     }
     async function handleSubmit(e) {
         e.preventDefault()
-        let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
+        // let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions/', {
+        let resp = await fetch('http://127.0.0.1:3000/sessions/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            mode: 'cors',
+            credentials: 'include',
             body: JSON.stringify(formData)
         })
 

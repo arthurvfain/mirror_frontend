@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 function SignUp ({setCurrentUser}) {
-    const [formData, setFormData] = useState({username: '', password: '', address: ''})
+    const [formData, setFormData] = useState({username: '', password: '', email: '', firstName: '', lastName: ''})
     const [errors, setErrors] = useState([])
 
     let history = useHistory()
@@ -44,6 +44,14 @@ function SignUp ({setCurrentUser}) {
     return (
         <div className='pageContent'>
             <Form onSubmit={handleSubmit} style={{maxWidth: '18rem', margin: 'auto'}}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control type="text" placeholder="First Name" onChange={handleChange} name='firstName' value={formData.firstName}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control type="text" placeholder="Last Name" onChange={handleChange} name='LastName' value={formData.lastName}/>
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="text" placeholder="Username" onChange={handleChange} name='username' value={formData.username}/>
