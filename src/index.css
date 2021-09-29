@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pageContent{
+  text-align: center;
+  padding: 30px;
+}
+
+#logo {
+  margin: auto;
+  text-align: center;
+  margin-top: 140px;
+  height: 80px;
+  width: 220px;
+  /* padding-top: 10%; */
+  background-color: rgb(13, 110, 253);
+  color: white;
+  border-radius: 8px;
+}
+
+#logo h1 {
+  padding-top: 9px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+h2 {
+  padding: 10px;
+}
+h3 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#footer {
+  position: fixed;
+  height: 40px;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(13, 110, 253);
+  text-align: center;
+  padding-top: 10px;
+}
+
+.custom-select {
+  background-color: rgb(13, 110, 253);
+  color: white;
+  height: 37px;
+  width: 100px;
+  border-radius: 8px;
+  margin: 0px 10px 0px 10px;
+}
+.custom-select option{
+background-color: rgb(13, 110, 253);
+}
