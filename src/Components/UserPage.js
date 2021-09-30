@@ -18,6 +18,7 @@ function UserPage({currentUser}){
     
     useEffect(() => {
         fetch(`/users/${params.id}`).then(r=>r.json()).then((data) => {
+            console.log(params)
             setUser(data)
             setLoading(false)
             setFriendList(data.friends)
@@ -32,7 +33,7 @@ function UserPage({currentUser}){
                 setInverseRequested(true)
             }
         })
-    }, [])
+    }, [currentUser, params.id, params])
 
     function addFriend() {
         console.log('clicked')

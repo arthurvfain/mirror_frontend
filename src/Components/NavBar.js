@@ -23,13 +23,12 @@ function NavBar({currentUser, setCurrentUser}) {
         <Navbar bg="primary" variant="dark">
         <Container>
         <LinkContainer to='/' style={{ fontWeight:'bold' }}>
-            <Navbar.Brand >ShowUp{currentUser ? `, ${currentUser.username}`: null}</Navbar.Brand>
+            <Navbar.Brand >MIЯROR{currentUser ? `, ${currentUser.username}`: null}</Navbar.Brand>
         </LinkContainer>     
         {currentUser ?  
             <Nav className="me-auto">
                 <LinkContainer to='/home'><Nav.Link>Home</Nav.Link></LinkContainer>
                 <LinkContainer to='/friends'><Nav.Link>Friends List</Nav.Link></LinkContainer>
-                <LinkContainer to='/create_event'><Nav.Link >Create an Event</Nav.Link></LinkContainer>
                 <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
             </Nav> 
             :

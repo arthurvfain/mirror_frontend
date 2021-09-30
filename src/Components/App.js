@@ -14,12 +14,16 @@ function App() {
   const [currentUser, setCurrentUser] = useState('')
   
   useEffect(() => {
-    fetch('https://fierce-everglades-57964.herokuapp.com/me').then(r=>r.json()).then(user=>{
+    fetch('https://fierce-everglades-57964.herokuapp.com/me', {
+      method: 'GET',
+      credentials: 'include'
+    }).then(r=>r.json()).then(user=>{
       if (user)
       {
         setCurrentUser(user)
       }
     })
+    // fetch('https://fierce-everglades-57964.herokuapp.com/me').then(console.log)
   }, [])
 
   return (
