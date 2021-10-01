@@ -33,7 +33,7 @@ function Login({setCurrentUser}) {
         if (resp.ok) {
             setError([])
             resp.json().then(data => {
-                // console.log(data)
+                console.log(data)
                 setCurrentUser(data)
                 history.push('/home')
             }) // TO DO: ADD REDIRECT

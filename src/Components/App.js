@@ -6,6 +6,7 @@ import Login from './Login'
 import UserDashboard from './UserDashboard'
 import Users from './Users'
 import UserPage from './UserPage'
+import FriendsList from './FriendsList'
 import {useState, useEffect} from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
@@ -16,7 +17,11 @@ function App() {
   useEffect(() => {
     fetch('https://fierce-everglades-57964.herokuapp.com/me', {
       method: 'GET',
-      credentials: 'include'
+      credentials: 'same-origin',
+      sameSite: 'none',
+      httpOnly: 'true',
+      secure: 'true', 
+      headers: {'withCredentials': 'true'}
     }).then(r=>r.json()).then(user=>{
       if (user)
       {
@@ -28,7 +33,7 @@ function App() {
 
   return (
     <>
-    <NavBar />
+    <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
     <Switch>
       <Route exact path='/'>
         <HomeLogo />
@@ -48,6 +53,9 @@ function App() {
       <Redirect from={`/x_user_page/:id`} to={`/user_page/:id`} />
       <Route exact path='/user_page/:id'>
         <UserPage currentUser={currentUser}/>
+      </Route>
+      <Route exact path='/friends'>
+        <FriendsList currentUser={currentUser}/>
       </Route>
     </Switch>
     </>

@@ -7,8 +7,13 @@ function NavBar({currentUser, setCurrentUser}) {
 
     let history = useHistory()
     async function handleLogout() {
-        let resp = await fetch('/sessions', {
-            method: 'DELETE'
+        let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
+            method: 'DELETE',
+            // credentials: 'include',
+            sameSite: 'none',
+            httpOnly: 'true',
+            secure: 'true',
+            headers: { 'Secure': 'true',}
         })
 
         if(resp.ok) {

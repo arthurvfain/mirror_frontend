@@ -16,10 +16,12 @@ function UserPage({currentUser}){
     const [friendRequestId, setFriendRequestId] = useState('')
     const [friendList, setFriendList] = useState([])
     
+    console.log(params)
+    
     useEffect(() => {
-        fetch(`/users/${params.id}`).then(r=>r.json()).then((data) => {
-            console.log(params)
+        fetch(`https://fierce-everglades-57964.herokuapp.com/users/${params.id}`).then(r=>r.json()).then((data) => {
             setUser(data)
+            console.log(data.friends)
             setLoading(false)
             setFriendList(data.friends)
             if (data.friends.some(friend => friend.id === currentUser.id)) {
