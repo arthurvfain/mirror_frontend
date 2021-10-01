@@ -13,7 +13,7 @@ function NavBar({currentUser, setCurrentUser}) {
             sameSite: 'none',
             httpOnly: 'true',
             secure: 'true',
-            headers: { 'Secure': 'true',}
+            headers: { 'Secure': 'true', 'cookie': 'include'}
         })
 
         if(resp.ok) {
