@@ -17,11 +17,11 @@ function App() {
   useEffect(() => {
     fetch('https://fierce-everglades-57964.herokuapp.com/me', {
       method: 'GET',
-      credentials: 'same-origin',
-      sameSite: 'none',
-      httpOnly: 'true',
-      secure: 'true', 
-      headers: {'withCredentials': 'true'}
+      credentials: 'include'
+      // sameSite: 'none',
+      // httpOnly: 'true',
+      // secure: 'true', 
+      // headers: {'withCredentials': 'true'}
     }).then(r=>r.json()).then(user=>{
       if (user)
       {
