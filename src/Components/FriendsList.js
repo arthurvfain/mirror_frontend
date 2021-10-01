@@ -17,7 +17,7 @@ function FriendsList({currentUser}) {
             setLoading(false)
         })
         
-    }, [])
+    }, [currentUser.id])
 
     return (
     <div className = 'pageContent'>
