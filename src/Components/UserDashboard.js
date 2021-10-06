@@ -1,21 +1,23 @@
-// import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
+import UserReflection from './UserReflection'
+import FriendRequests from './FriendRequests'
 
 function UserDashboard({currentUser}){
 
-    // const [loading, setLoading] = useState(true)
-    // const [events, setEvents] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [reflection, setReflection] = useState([])
 
-    // useEffect(() => { 
-    //     fetch(`/event_users/${currentUser.id}`).then(r=>r.json()).then(data=>{
-    //         setEvents(data)
-    //         setLoading(false)
-    //     })
-    // }, [])
+    useEffect(() => { 
+        fetch(`http://localhost:3000/reflections/${currentUser.id}`).then(r=>r.json()).then(data=>{
+            setReflection(data)
+            setLoading(false)
+        })
+    }, [])
 
     return (
         <div className='pageContent'>
-            {/* <UserEvents loading={loading} events={events}/>
-            <PendingInvitations setEvents={setEvents} events={events} currentUser={currentUser}/> */}
+            <UserReflection currentUser={currentUser}/>
+            <FriendRequests currentUser={currentUser}/>
         </div>
     )
 

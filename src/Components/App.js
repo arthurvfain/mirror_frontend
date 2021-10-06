@@ -7,6 +7,7 @@ import UserDashboard from './UserDashboard'
 import Users from './Users'
 import UserPage from './UserPage'
 import FriendsList from './FriendsList'
+import ReflectionModule from './ReflectionModule'
 import {useState, useEffect} from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
@@ -15,13 +16,14 @@ function App() {
   const [currentUser, setCurrentUser] = useState('')
   
   useEffect(() => {
-    fetch('https://fierce-everglades-57964.herokuapp.com/me', {
-      method: 'GET',
-      credentials: 'include',
-      sameSite: 'none',
-      httpOnly: 'true',
-      secure: 'true', 
-      headers: {'withCredentials': 'true'}
+    // fetch('https://fierce-everglades-57964.herokuapp.com/me', {
+    fetch('http://localhost:3000/me', {
+      method: 'GET'
+      // credentials: 'include',
+      // sameSite: 'none',
+      // httpOnly: 'true',
+      // secure: 'true', 
+      // headers: {'withCredentials': 'true'}
     }).then(r=>r.json()).then(user=>{
       if (user)
       {
@@ -51,11 +53,14 @@ function App() {
         <Users currentUser={currentUser}></Users>
       </Route>
       <Redirect from={`/x_user_page/:id`} to={`/user_page/:id`} />
+      <Route exact path='/friends'>
+        <FriendsList currentUser={currentUser}/>
+      </Route>
       <Route exact path='/user_page/:id'>
         <UserPage currentUser={currentUser}/>
       </Route>
-      <Route exact path='/friends'>
-        <FriendsList currentUser={currentUser}/>
+      <Route exact path='/reflection_module/:id'>
+        <ReflectionModule currentUser={currentUser}/>
       </Route>
     </Switch>
     </>

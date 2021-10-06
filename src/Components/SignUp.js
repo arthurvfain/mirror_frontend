@@ -23,7 +23,7 @@ function SignUp ({setCurrentUser}) {
     async function handleSubmit(e) {
         console.log(formData)
         e.preventDefault()
-        let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/users', {
+        let resp = await fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -9,8 +9,9 @@ function Users({currentUser}){
     const [loading, setLoading] = useState(true)
     
     useEffect(() => {
-        fetch('/users').then(r=>r.json()).then((data) => {
+        fetch('http://localhost:3000/users').then(r=>r.json()).then((data) => {
             setUserList(data)
+            console.log(userList)
             setLoading(false)
         })
     }, [])
@@ -20,7 +21,7 @@ function Users({currentUser}){
     return (
         <div className='pageContent'>
             <h1>Mirrors</h1>
-            {loading ? <Loading /> : <Grid container justifyContent='center' spacing={2}>{filteredUsers.map(user => <Grid item xs={6} sm={3} key={user.id}><UserCard friend={user}/></Grid>)}</Grid>}
+            {loading ? <Loading /> : <Grid container justifyContent='center' spacing={2}>{filteredUsers.map(user => <Grid item xs={6} sm={3} key={user.id}><UserCard user={user}/></Grid>)}</Grid>}
         </div>
     )
 }

@@ -20,7 +20,8 @@ function Login({setCurrentUser}) {
     }
     async function handleSubmit(e) {
         e.preventDefault()
-        let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
+        // let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
+        let resp = await fetch('http://localhost:3000/sessions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +34,7 @@ function Login({setCurrentUser}) {
         if (resp.ok) {
             setError([])
             resp.json().then(data => {
-                console.log(data)
+                console.log('login compnent' + data)
                 setCurrentUser(data)
                 history.push('/home')
             }) // TO DO: ADD REDIRECT

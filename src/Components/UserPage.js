@@ -4,6 +4,8 @@ import UserCard from './UserCard'
 import Loading from './Loading'
 import { Grid } from '@material-ui/core'
 import { Button } from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
+
 function UserPage({currentUser}){
     
     const params = useParams();
@@ -15,13 +17,18 @@ function UserPage({currentUser}){
     const [inverseRequested, setInverseRequested] = useState(false)
     const [friendRequestId, setFriendRequestId] = useState('')
     const [friendList, setFriendList] = useState([])
+    // const [criteria, setCriteria] = useState([])
+    // const [reflection, setReflection] = useState({or: '', ol: '', cr: '', cl: '', er: '', el: '', ar: '', al: '', nr: '', nl: ''})
+    // const [errors, setErrors] = useState([])
     
-    console.log(params)
+    console.log("params", params.id)
     
     useEffect(() => {
-        fetch(`https://fierce-everglades-57964.herokuapp.com/users/${params.id}`).then(r=>r.json()).then((data) => {
+        // fetch(`https://fierce-everglades-57964.herokuapp.com/users/${params.id}`).then(r=>r.json()).then((data) => {
+        // fetch('http://localhost:3000/reflection_gen').then(r=>r.json()).then(data => setCriteria(data))
+        fetch(`http://localhost:3000/users/${params.id}`).then(r=>r.json()).then((data) => {
             setUser(data)
-            console.log(data.friends)
+            console.log("single user", data.friends)
             setLoading(false)
             setFriendList(data.friends)
             if (data.friends.some(friend => friend.id === currentUser.id)) {
@@ -35,11 +42,11 @@ function UserPage({currentUser}){
                 setInverseRequested(true)
             }
         })
-    }, [currentUser, params.id, params])
+    }, [])
 
     function addFriend() {
         console.log('clicked')
-        fetch('/friend_requests', {
+        fetch('http://localhost:3000/friend_requests', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,14 +63,14 @@ function UserPage({currentUser}){
     function cancelRequest() {
         console.log(currentUser)
         console.log(user)
-        fetch(`/cancel_request/${currentUser.id}/${user.id}`, {
+        fetch(`http://localhost:3000/cancel_request/${currentUser.id}/${user.id}`, {
             method: 'DELETE'
         })
         .then(() => setRequested(false))
     }
 
     function acceptRequest() {
-        fetch(`/friendships`, {
+        fetch(`http://localhost:3000/friendships`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -77,7 +84,7 @@ function UserPage({currentUser}){
     }
 
     function unfriend() {
-        fetch(`/unfriend/${currentUser.id}/${user.id}`, {method: 'DELETE'})
+        fetch(`http://localhost:3000/unfriend/${currentUser.id}/${user.id}`, {method: 'DELETE'})
         .then(() => {
             setFriend(false)
             setRequested(false)
@@ -87,20 +94,34 @@ function UserPage({currentUser}){
         })
     }
     
-    
+    // function reviewModule(user)
+    // {
+    //     let criteriaArray = Object.values(criteria)
+    //     return (
+    //         <div>
+    //             <h3>What do you see ?</h3>
+                
+    //             {criteriaArray.map(criterion => <h4>{criterion}</h4>)}
+    //         </div>
+    //     )
+    // }
+
     function generateUserPage(user){
         // let publicEvents = user.events.filter(event => event.public)
+        console.log(user)
         return (
             <div>
-                <h1>{user.username}'s Page</h1>
+                <h1>{user.first_name + ' ' + user.last_name}</h1>
                 {currentUser ? !friend ? requested ? <Button variant="primary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="primary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="primary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="primary" onClick={() => unfriend()}>Unfriend</Button>:null}
-                <h3>User Events</h3>
-                {/* <Grid container align='center' justifyContent='center' spacing={2}>
+                <br/>
+                {friend ? <LinkContainer target='_self' to={`/reflection_module/${user.id}`}><Button variant="primary" size="lg" as='h1'>Reflect</Button></LinkContainer> : ""}
+                {/* <h3>User Events</h3>
+                <Grid container align='center' justifyContent='center' spacing={2}>
                     {publicEvents.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}
                 </Grid> */}
                 <h3>User Friends</h3>
                 <Grid container justifyContent='center' spacing={2}>
-                    {friendList.map(friend => <Grid item xs={6} sm={3} key={friend.id}><UserCard friend={friend}/></Grid>)}
+                    {friendList.map(friend => <Grid item xs={6} sm={3} key={friend.id}><UserCard user={friend}/></Grid>)}
                 </Grid>
             </div>
         )

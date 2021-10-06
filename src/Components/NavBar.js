@@ -7,7 +7,8 @@ function NavBar({currentUser, setCurrentUser}) {
 
     let history = useHistory()
     async function handleLogout() {
-        let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
+        // let resp = await fetch('https://fierce-everglades-57964.herokuapp.com/sessions', {
+        let resp = await fetch('http://localhost:3000/sessions', {
             method: 'DELETE',
             credentials: 'include'
         })
@@ -30,6 +31,7 @@ function NavBar({currentUser, setCurrentUser}) {
             <Nav className="me-auto">
                 <LinkContainer to='/home'><Nav.Link>Home</Nav.Link></LinkContainer>
                 <LinkContainer to='/friends'><Nav.Link>Friends List</Nav.Link></LinkContainer>
+                <LinkContainer to='/user_list'><Nav.Link>Users List</Nav.Link></LinkContainer>
                 <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
             </Nav> 
             :

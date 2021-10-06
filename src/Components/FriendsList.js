@@ -11,13 +11,14 @@ function FriendsList({currentUser}) {
     const [friends, setFriends] = useState([])
     
     useEffect(() => {
-        fetch(`https://fierce-everglades-57964.herokuapp.com/friendships/${currentUser.id}`).then(r=>r.json()).then(data=>{
+        // fetch(`https://fierce-everglades-57964.herokuapp.com/friendships/${currentUser.id}`).then(r=>r.json()).then(data=>{
+        fetch(`http://localhost:3000/friendships/${currentUser.id}`).then(r=>r.json()).then(data=>{
             console.log(data)
             setFriends(data)
             setLoading(false)
         })
         
-    }, [currentUser.id])
+    }, [])
 
     return (
     <div className = 'pageContent'>
