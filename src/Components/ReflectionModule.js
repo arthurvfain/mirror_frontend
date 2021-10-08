@@ -9,6 +9,7 @@ function ReflectionModule({currentUser})
     let history = useHistory()
     const params = useParams();
     const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState('')
     const [criteria, setCriteria] = useState([])
     const [reflection, setReflection] = useState({or: '', ol: '', cr: '', cl: '', er: '', el: '', ar: '', al: '', nr: '', nl: ''})
     const [error, setError] = useState([])
@@ -18,6 +19,8 @@ function ReflectionModule({currentUser})
         .then(r=>r.json())
         .then(data => setCriteria((Object.keys(data).map(key => [key, data[key]]))))
         setLoading(false)
+        fetch(`http://localhost:3000/users/${params.id}`).then(r => r.json()).then(data => setUser(`${data.first_name +' '+ data.last_name}`))
+        console.log(user)
         console.log(currentUser)
     }, [])
 
@@ -59,12 +62,12 @@ function ReflectionModule({currentUser})
     {
         return(
             <div className='pageContent'>
-                <h3>Reflection</h3>
+                <h3>{user}'s Reflection</h3>
                 <form onChange={handleChange} onSubmit={handleSubmit}>
                     <label>What do you see ?</label>
                     {criteria.map(criterion => <><h4>{criterion[1]}</h4><select className = 'custom-select' name={criterion[0]} defaultValue='default'><option disabled value='default'>---</option>{[...Array(10).keys()].map(number => <option value={number}>${number}</option>)}</select></>)}
                     
-                    <Button variant="outline-primary" as="input" type='submit' value='Reflect'/>
+                    <Button variant="outline-secondary" as="input" type='submit' value='Reflect'/>
                 </form>
             </div>
         )

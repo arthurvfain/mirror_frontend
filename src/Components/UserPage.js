@@ -17,9 +17,6 @@ function UserPage({currentUser}){
     const [inverseRequested, setInverseRequested] = useState(false)
     const [friendRequestId, setFriendRequestId] = useState('')
     const [friendList, setFriendList] = useState([])
-    // const [criteria, setCriteria] = useState([])
-    // const [reflection, setReflection] = useState({or: '', ol: '', cr: '', cl: '', er: '', el: '', ar: '', al: '', nr: '', nl: ''})
-    // const [errors, setErrors] = useState([])
     
     console.log("params", params.id)
     
@@ -93,18 +90,7 @@ function UserPage({currentUser}){
             setFriendList(newFriends)
         })
     }
-    
-    // function reviewModule(user)
-    // {
-    //     let criteriaArray = Object.values(criteria)
-    //     return (
-    //         <div>
-    //             <h3>What do you see ?</h3>
-                
-    //             {criteriaArray.map(criterion => <h4>{criterion}</h4>)}
-    //         </div>
-    //     )
-    // }
+
 
     function generateUserPage(user){
         // let publicEvents = user.events.filter(event => event.public)
@@ -112,13 +98,10 @@ function UserPage({currentUser}){
         return (
             <div>
                 <h1>{user.first_name + ' ' + user.last_name}</h1>
-                {currentUser ? !friend ? requested ? <Button variant="primary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="primary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="primary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="primary" onClick={() => unfriend()}>Unfriend</Button>:null}
-                <br/>
-                {friend ? <LinkContainer target='_self' to={`/reflection_module/${user.id}`}><Button variant="primary" size="lg" as='h1'>Reflect</Button></LinkContainer> : ""}
-                {/* <h3>User Events</h3>
-                <Grid container align='center' justifyContent='center' spacing={2}>
-                    {publicEvents.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}
-                </Grid> */}
+                {currentUser ? !friend ? requested ? <Button variant="secondary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="secondary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="secondary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="secondary" onClick={() => unfriend()}>Unfriend</Button>:null}
+                <hr/>
+                {friend ? <LinkContainer target='_self' to={`/reflection_module/${user.id}`}><Button variant="secondary" >Reflect</Button></LinkContainer> : ""}
+                <hr/>
                 <h3>User Friends</h3>
                 <Grid container justifyContent='center' spacing={2}>
                     {friendList.map(friend => <Grid item xs={6} sm={3} key={friend.id}><UserCard user={friend}/></Grid>)}

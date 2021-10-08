@@ -23,7 +23,7 @@ function FriendsList({currentUser}) {
     return (
     <div className = 'pageContent'>
     <h1>Friends</h1>
-    {loading ? <Loading /> : friends.length > 0 ? <Grid container justifyContent='center' spacing={2}>{friends.map(user => <Grid item xs={6} sm={3} key={user.id}><UserCard user={user}/></Grid>)}</Grid> : <LinkContainer to='/user_list'><Button>Get Out There !</Button></LinkContainer>}
+    {loading ? <Loading /> : friends.length > 0 ? <Grid container justifyContent='center' spacing={2}>{friends.map(user => <Grid item xs={6} sm={3} key={user.id}><UserCard user={user}/></Grid>)}</Grid> : <LinkContainer to='/user_list'><Button variant='secondary'>Get Out There !</Button></LinkContainer>}
     </div>
     )
 }

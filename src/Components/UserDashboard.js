@@ -1,18 +1,18 @@
-import {useState, useEffect} from 'react'
+// import {useState, useEffect} from 'react'
 import UserReflection from './UserReflection'
 import FriendRequests from './FriendRequests'
 
 function UserDashboard({currentUser}){
 
-    const [loading, setLoading] = useState(true)
-    const [reflection, setReflection] = useState([])
+    // const [loading, setLoading] = useState(true)
+    // const [reflection, setReflection] = useState([])
 
-    useEffect(() => { 
-        fetch(`http://localhost:3000/reflections/${currentUser.id}`).then(r=>r.json()).then(data=>{
-            setReflection(data)
-            setLoading(false)
-        })
-    }, [])
+    // useEffect(() => { 
+    //     fetch(`http://localhost:3000/reflections/${currentUser.id}`).then(r=>r.json()).then(data=>{
+    //         setReflection(data)
+    //         setLoading(false)
+    //     })
+    // }, [])
 
     return (
         <div className='pageContent'>

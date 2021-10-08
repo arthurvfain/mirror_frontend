@@ -22,10 +22,10 @@ function NavBar({currentUser, setCurrentUser}) {
 
     return (
 
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="black" variant="dark">
         <Container>
         <LinkContainer to='/' style={{ fontWeight:'bold' }}>
-            <Navbar.Brand >MIЯROR{currentUser ? `, ${currentUser.username}`: null}</Navbar.Brand>
+            <Navbar.Brand >{currentUser ? `${currentUser.first_name}'s `: null}MIЯROR</Navbar.Brand>
         </LinkContainer>     
         {currentUser ?  
             <Nav className="me-auto">

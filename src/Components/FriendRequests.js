@@ -47,7 +47,7 @@ function FriendRequests({currentUser}) {
     return (
     <>
     <h1>Friend Requests</h1>
-    {loading ? <Loading /> : friendRequests.length > 0 ? <Grid container align='center' justifyContent='center' spacing={2}>{friendRequests.map(request => <Grid item xs={6} sm={3} key={request.id}><FrRequest request={request} rejectRequest={rejectRequest} acceptRequest={acceptRequest}/></Grid>)}</Grid> : <LinkContainer to='/user_list'><Button>Get Out There !</Button></LinkContainer>}
+    {loading ? <Loading /> : friendRequests.length > 0 ? <Grid container align='center' justifyContent='center' spacing={2}>{friendRequests.map(request => <Grid item xs={6} sm={3} key={request.id}><FrRequest request={request} rejectRequest={rejectRequest} acceptRequest={acceptRequest}/></Grid>)}</Grid> : <LinkContainer to='/user_list'><Button variant='secondary'>Get Out There !</Button></LinkContainer>}
     </>
     )
 }

@@ -61,7 +61,7 @@ function Login({setCurrentUser}) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" onChange={handleChange} name='password' value={formData.password}/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="secondary" type="submit">
                     Submit
                 </Button>
             </Form>
