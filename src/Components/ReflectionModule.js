@@ -52,7 +52,6 @@ function ReflectionModule({currentUser})
         if (resp.ok) {
             setError([])
             resp.json().then(history.push(`/user_page/${params.id}`))
-            // TO DO: ADD REDIRECT
         } else {
             resp.json().then(data => setError(data.errors))
         }

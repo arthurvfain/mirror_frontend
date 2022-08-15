@@ -32,7 +32,7 @@ function UserReflection ({currentUser})
             <>
                 <h1>Reflection</h1>
 
-                    <div justifyContent='center'>
+                    <div>
                         <img src='/Openness.png' alt='Openness' style={{position: 'static', width: '800px'}}/>
                         <img src='/uparrow.png' alt='uparrow' style={{width: '40px', position: 'absolute', right: `${((windowSize/2)-20)-(reflection[0]/9)*(-320)}px`, top: '250px'}}/>
                     </div>

@@ -17,20 +17,20 @@ function App() {
   
   useEffect(() => {
     // fetch('https://fierce-everglades-57964.herokuapp.com/me', {
-    fetch('http://localhost:3000/me', {
-      method: 'GET'
-      // credentials: 'include',
-      // sameSite: 'none',
-      // httpOnly: 'true',
-      // secure: 'true', 
-      // headers: {'withCredentials': 'true'}
-    }).then(r=>r.json()).then(user=>{
-      if (user)
-      {
-        setCurrentUser(user)
-      }
-    })
-    // fetch('https://fierce-everglades-57964.herokuapp.com/me').then(console.log)
+    // fetch('http://localhost:3000/me', {
+    //   method: 'GET'
+    //   // credentials: 'include',
+    //   // sameSite: 'none',
+    //   // httpOnly: 'true',
+    //   // secure: 'true', 
+    //   // headers: {'withCredentials': 'true'}
+    // }).then(r=>r.json()).then(user=>{
+    //   if (user)
+    //   {
+    //     setCurrentUser(user)
+    //   }
+    // })
+    fetch('https://fierce-everglades-57964.herokuapp.com/me').then(console.log)
   }, [])
 
   return (
